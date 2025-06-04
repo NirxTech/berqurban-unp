@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berqurban Bersama UNP Peduli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; }
+        .faq-answer { display: none; }
+        .faq-open .faq-answer { display: block; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-green-50 min-h-screen text-gray-800">
+    <!-- HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="../assets/logo/unp.png" alt="Logo UNP" class="w-12 h-12 rounded-lg shadow" />
+                <div>
+                    <span class="block text-lg font-bold text-blue-700">Berqurban Bersama</span>
+                    <span class="block text-sm text-gray-500">UNP Peduli 1447 H</span>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <a href="auth/login.html" class="px-5 py-2 rounded-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition">Login</a>
+                <a href="auth/register.html" class="px-5 py-2 rounded-lg font-semibold bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 transition">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-blue-100 via-white to-green-100 py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+            <div class="flex-1 text-center md:text-left" data-aos="fade-right">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-blue-800 leading-tight">Qurban Mudah, Amanah, dan Transparan di UNP</h1>
+                <p class="text-lg text-gray-600 mb-6">Program qurban tahunan khusus dosen & karyawan UNP dengan sistem potong gaji otomatis. Bergabunglah dan wujudkan solidaritas melalui ibadah qurban!</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+                    <a href="auth/register.html" class="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition">Daftar Qurban</a>
+                    <a href="#tentang-qurban" class="bg-white border border-green-600 text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition">Apa itu Qurban?</a>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center" data-aos="fade-left">
+                <img src="../assets/logo/sapi.jpg" alt="Ilustrasi Qurban" class="w-80 max-w-full rounded-xl shadow-lg" />
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTICS -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="bg-white rounded-xl shadow p-8" data-aos="fade-up">
+                <div class="text-3xl font-bold text-blue-700 mb-2" id="pesertaCount">120</div>
+                <div class="text-gray-500">Peserta Terdaftar</div>
+            </div>
+            <div class="bg-white rounded-xl shadow p-8" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-3xl font-bold text-green-700 mb-2" id="biayaCount">Rp 210.000.000</div>
+                <div class="text-gray-500">Dana Terkumpul</div>
+            </div>
+            <div class="bg-white rounded-xl shadow p-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-3xl font-bold text-orange-600 mb-2" id="countdown">12 : 10 : 05 : 33</div>
+                <div class="text-gray-500">Menuju Idul Adha 1447 H</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRAFIK -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-xl shadow p-8" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6 text-blue-700 flex items-center gap-2">
+                <span>📈</span> Grafik Potongan Gaji Bulanan
+            </h2>
+            <canvas id="potonganChart" height="120"></canvas>
+        </div>
+    </section>
+
+    <!-- APA ITU QURBAN -->
+    <section id="tentang-qurban" class="container mx-auto px-4 py-16">
+        <div class="bg-gradient-to-r from-green-50 via-white to-blue-50 rounded-xl shadow p-8 flex flex-col md:flex-row items-center gap-8">
+            <div class="flex-1" data-aos="fade-right">
+                <img src="../assets/logo/sapi2.jpg" alt="Qurban" class="w-64 max-w-full rounded-lg shadow" />
+            </div>
+            <div class="flex-1" data-aos="fade-left">
+                <h2 class="text-3xl font-bold text-green-700 mb-4">Apa itu Qurban?</h2>
+                <p class="text-gray-700 mb-3">
+                    Qurban adalah ibadah menyembelih hewan ternak pada Hari Raya Idul Adha dan hari-hari tasyrik sebagai bentuk ketaatan kepada Allah SWT. Di UNP, qurban dikelola secara profesional dan transparan, khusus untuk dosen dan karyawan yang ingin berpartisipasi bersama.
+                </p>
+                <ul class="list-disc list-inside text-gray-600">
+                    <li>Peserta mendaftar melalui website</li>
+                    <li>Pemotongan gaji otomatis setiap bulan</li>
+                    <li>Laporan dan proses transparan</li>
+                    <li>Distribusi daging qurban merata dan amanah</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center text-blue-700 mb-10" data-aos="fade-up">FAQ - Pertanyaan Umum</h2>
+        <div class="max-w-2xl mx-auto space-y-4">
+            <div class="bg-white rounded-lg shadow p-5 cursor-pointer faq-item" data-aos="fade-up">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-lg">Siapa saja yang bisa ikut qurban di UNP?</span>
+                    <span class="faq-toggle text-blue-600 text-2xl">+</span>
+                </div>
+                <div class="faq-answer mt-3 text-gray-600">
+                    Hanya dosen dan karyawan UNP yang dapat mendaftar dan mengikuti program qurban bersama ini.
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-5 cursor-pointer faq-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-lg">Bagaimana mekanisme pembayaran qurban?</span>
+                    <span class="faq-toggle text-blue-600 text-2xl">+</span>
+                </div>
+                <div class="faq-answer mt-3 text-gray-600">
+                    Pembayaran dilakukan dengan sistem potong gaji otomatis setiap bulan selama satu tahun.
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-5 cursor-pointer faq-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-lg">Apakah ada laporan keuangan qurban?</span>
+                    <span class="faq-toggle text-blue-600 text-2xl">+</span>
+                </div>
+                <div class="faq-answer mt-3 text-gray-600">
+                    Ya, laporan keuangan dan peserta qurban dapat diakses secara transparan melalui dashboard.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-700 text-white py-10 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="font-bold text-xl mb-2">UNP Qurban</h3>
+                <p class="text-blue-100">Program qurban tahunan untuk civitas akademika Universitas Negeri Padang.</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl mb-2">Kontak</h3>
+                <p>Email: qurban@unp.ac.id</p>
+                <p>Telp: (0751) 12345</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl mb-2">Alamat</h3>
+                <p>Jl. Prof. Dr. Hamka, Air Tawar, Padang, Sumatera Barat</p>
+            </div>
+        </div>
+        <div class="text-center mt-8 text-blue-200 text-sm">
+            &copy; 2024 UNP Qurban Management. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Statistik animasi sinkron dengan localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            let peserta = JSON.parse(localStorage.getItem('pesertaQurban') || '[]');
+            let totalPeserta = peserta.length;
+            let totalDana = peserta.reduce((a, b) => a + (b.potongan || 0), 0);
+
+            if (typeof CountUp !== 'undefined') {
+                new CountUp('pesertaCount', totalPeserta, { duration: 2 }).start();
+                new CountUp('biayaCount', totalDana, { duration: 2, prefix: 'Rp ', separator: '.' }).start();
+            } else {
+                document.getElementById('pesertaCount').textContent = totalPeserta;
+                document.getElementById('biayaCount').textContent = 'Rp ' + totalDana.toLocaleString('id-ID');
+            }
+        });
+
+        // Countdown
+        function updateCountdown() {
+            const qurbanDate = new Date('2025-06-07T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = qurbanDate - now;
+            const days = Math.max(0, Math.floor(distance / (1000 * 60 * 60 * 24)));
+            const hours = Math.max(0, Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+            const minutes = Math.max(0, Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+            const seconds = Math.max(0, Math.floor((distance % (1000 * 60)) / 1000));
+            document.getElementById('countdown').textContent =
+                `${days.toString().padStart(2, '0')} : ${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Grafik Chart.js
+        const ctx = document.getElementById('potonganChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'],
+                datasets: [{
+                    label: 'Potongan Gaji (Juta Rupiah)',
+                    data: [15, 18, 17, 20, 19, 21, 22, 20, 18, 19, 21, 20],
+                    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                    borderColor: 'rgba(37, 99, 235, 1)',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#2563eb', font: { weight: 'bold' } },
+                        grid: { color: 'rgba(37,99,235,0.07)' }
+                    },
+                    x: {
+                        ticks: { color: '#2563eb', font: { weight: 'bold' } },
+                        grid: { color: 'rgba(37,99,235,0.07)' }
+                    }
+                }
+            }
+        });
+
+        // FAQ Interaktif
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('faq-open');
+                const icon = this.querySelector('.faq-toggle');
+                icon.textContent = this.classList.contains('faq-open') ? '-' : '+';
+            });
+        });
+    </script>
+</body>
+</html>

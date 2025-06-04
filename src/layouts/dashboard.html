@@ -1,0 +1,327 @@
+<!-- This file serves as the layout template for the dashboard page, including links to styles and scripts. -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Berqurban Bersama UNP Peduli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .bg-masjid {
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.08;
+        }
+        .main-content {
+            position: relative;
+            z-index: 1;
+        }
+        .sidebar-icon {
+            min-width: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-green-50 min-h-screen flex overflow-x-hidden">
+    <div class="bg-masjid"></div>
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="w-64 h-screen bg-blue-700 text-white flex-shrink-0 flex flex-col sticky top-0 z-20 shadow-lg main-content">
+        <div class="p-6 flex items-center gap-3 border-b border-blue-600">
+            <img src="../assets/logo/unp.png" alt="Logo UNP" class="w-10 h-10 rounded-lg shadow" />
+            <span class="font-bold text-lg flex items-center gap-2"><i class="fa-solid fa-cow"></i> UNP Qurban</span>
+        </div>
+        <nav class="flex-1 mt-6 space-y-2">
+            <a href="#" class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800 transition rounded font-semibold">
+                <i class="fa-solid fa-gauge sidebar-icon"></i> Dashboard
+            </a>
+            <a href="#input-potongan" class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800 transition rounded font-semibold">
+                <i class="fa-solid fa-money-bill-wave sidebar-icon"></i> Input Potongan Gaji
+            </a>
+            <a href="#laporan" class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800 transition rounded font-semibold">
+                <i class="fa-solid fa-file-lines sidebar-icon"></i> Laporan Qurban
+            </a>
+            <a href="#logout" id="logoutBtn" class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800 transition rounded font-semibold">
+                <i class="fa-solid fa-right-from-bracket sidebar-icon"></i> Logout
+            </a>
+        </nav>
+        <div class="p-6 text-xs text-blue-200 border-t border-blue-600">
+            &copy; 2024 UNP Qurban
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-1 min-h-screen main-content">
+        <!-- TOP NAVBAR -->
+        <nav class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-10">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-mosque text-blue-700 text-2xl"></i>
+                <span class="font-bold text-blue-700 text-lg">Dashboard Qurban UNP</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span id="userWelcome" class="text-gray-700 font-semibold"></span>
+                <img src="https://ui-avatars.com/api/?name=Peserta+Qurban" alt="Profile" class="w-8 h-8 rounded-full border border-blue-200">
+            </div>
+        </nav>
+
+        <!-- DASHBOARD CONTENT -->
+        <main class="p-6 space-y-8">
+            <!-- Sambutan -->
+            <div class="bg-white rounded-xl shadow p-6 flex items-center gap-4" data-aos="fade-down">
+                <i class="fa-solid fa-hand-wave text-4xl text-green-600"></i>
+                <div>
+                    <h2 class="text-xl font-bold text-blue-700 mb-1" id="welcomeMsg">Selamat datang di Dashboard Qurban UNP!</h2>
+                    <p class="text-gray-600">Terima kasih telah bergabung dalam program qurban bersama UNP. Silakan kelola data potongan gaji dan lihat laporan peserta qurban di sini.</p>
+                </div>
+            </div>
+
+            <!-- Statistik -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl shadow p-6 text-center" data-aos="fade-up">
+                    <div class="text-3xl font-bold text-blue-700 mb-2"><i class="fa-solid fa-users"></i> <span id="statPeserta">120</span></div>
+                    <div class="text-gray-600">Peserta Terdaftar</div>
+                </div>
+                <div class="bg-gradient-to-br from-green-100 to-green-50 rounded-xl shadow p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-3xl font-bold text-green-700 mb-2"><i class="fa-solid fa-money-bill-wave"></i> <span id="statDana">Rp 210.000.000</span></div>
+                    <div class="text-gray-600">Dana Terkumpul</div>
+                </div>
+                <div class="bg-gradient-to-br from-yellow-100 to-yellow-50 rounded-xl shadow p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-3xl font-bold text-yellow-700 mb-2"><i class="fa-solid fa-clock"></i> <span id="statCountdown">12 : 10 : 05 : 33</span></div>
+                    <div class="text-gray-600">Menuju Idul Adha 1447 H</div>
+                </div>
+            </div>
+
+            <!-- Grafik Statistik Bulanan -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="laporan">
+                <div class="bg-white rounded-lg shadow-md p-6" data-aos="fade-up">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2"><i class="fa-solid fa-chart-column"></i> Statistik Potongan Gaji Bulanan</h3>
+                    <canvas id="monthlyChart" height="300"></canvas>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2"><i class="fa-solid fa-chart-pie"></i> Distribusi Peserta</h3>
+                    <canvas id="distributionChart" height="300"></canvas>
+                </div>
+            </div>
+
+            <!-- Input Potongan Gaji -->
+            <div class="bg-white rounded-lg shadow-md p-6" id="input-potongan" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2"><i class="fa-solid fa-money-check-dollar"></i> Input Data Potongan Gaji Perbulan</h3>
+                <form id="potonganForm" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-1">Nama Peserta</label>
+                        <input type="text" name="nama" class="w-full p-3 border border-gray-300 rounded focus:outline-blue-400" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-1">Bulan</label>
+                        <select name="bulan" class="w-full p-3 border border-gray-300 rounded focus:outline-blue-400" required>
+                            <option value="">Pilih Bulan</option>
+                            <option>Januari</option>
+                            <option>Februari</option>
+                            <option>Maret</option>
+                            <option>April</option>
+                            <option>Mei</option>
+                            <option>Juni</option>
+                            <option>Juli</option>
+                            <option>Agustus</option>
+                            <option>September</option>
+                            <option>Oktober</option>
+                            <option>November</option>
+                            <option>Desember</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-1">Nominal Potongan (Rp)</label>
+                        <input type="number" name="nominal" class="w-full p-3 border border-gray-300 rounded focus:outline-blue-400" required min="0">
+                    </div>
+                    <div class="md:col-span-3 flex justify-end">
+                        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Simpan Potongan
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Laporan Peserta Qurban -->
+            <div class="bg-white rounded-lg shadow-md p-6" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2"><i class="fa-solid fa-users"></i> Laporan Peserta Qurban 1447 H</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nama</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Jabatan</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total Potongan (Rp)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="laporan-list" class="divide-y divide-gray-200">
+                            <!-- Data dummy peserta qurban -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" class="px-6 py-3 text-right font-bold text-gray-700">Total Potongan Seluruh Peserta</td>
+                                <td class="px-6 py-3 font-bold text-green-700" id="totalPotongan">Rp 0</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Sambutan user
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = localStorage.getItem('user_name') || 'Peserta Qurban';
+            document.getElementById('userWelcome').textContent = user;
+            document.getElementById('welcomeMsg').innerHTML = `Selamat datang, <span class="text-green-700">${user}</span> di Dashboard Qurban UNP!`;
+        });
+
+        // Ambil data peserta dari localStorage atau dummy jika belum ada
+        let pesertaDummy = JSON.parse(localStorage.getItem('pesertaQurban') || '[]');
+        if (pesertaDummy.length === 0) {
+            pesertaDummy = [
+                { nama: "Ahmad Fauzi", jabatan: "Dosen", potongan: 17500000 },
+                { nama: "Siti Aminah", jabatan: "Staff", potongan: 8000000 },
+                { nama: "Budi Santoso", jabatan: "Mahasiswa", potongan: 3500000 },
+                { nama: "Rina Marlina", jabatan: "Karyawan", potongan: 9000000 },
+                { nama: "Dewi Lestari", jabatan: "Satpam", potongan: 4000000 }
+            ];
+            localStorage.setItem('pesertaQurban', JSON.stringify(pesertaDummy));
+        }
+
+        // Render laporan peserta
+        function renderLaporan() {
+            const tbody = document.getElementById('laporan-list');
+            tbody.innerHTML = '';
+            let total = 0;
+            pesertaDummy.forEach(p => {
+                total += p.potongan;
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">${p.nama}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">${p.jabatan}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-green-700 font-semibold">Rp ${p.potongan.toLocaleString('id-ID')}</td>
+                    </tr>
+                `;
+            });
+            document.getElementById('totalPotongan').textContent = 'Rp ' + total.toLocaleString('id-ID');
+            // Update statistik
+            document.getElementById('statPeserta').textContent = pesertaDummy.length;
+            document.getElementById('statDana').textContent = 'Rp ' + total.toLocaleString('id-ID');
+        }
+        renderLaporan();
+
+        // Input potongan gaji
+        document.getElementById('potonganForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nama = this.nama.value;
+            const bulan = this.bulan.value;
+            const nominal = parseInt(this.nominal.value);
+            if (nama && bulan && nominal > 0) {
+                pesertaDummy.push({ nama, jabatan: "Peserta", potongan: nominal });
+                localStorage.setItem('pesertaQurban', JSON.stringify(pesertaDummy)); // Simpan ke localStorage
+                renderLaporan();
+                this.reset();
+                alert('Data potongan berhasil disimpan!');
+            }
+        });
+
+        // Countdown
+        function updateCountdown() {
+            const qurbanDate = new Date('2025-06-07T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = qurbanDate - now;
+            const days = Math.max(0, Math.floor(distance / (1000 * 60 * 60 * 24)));
+            const hours = Math.max(0, Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+            const minutes = Math.max(0, Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+            const seconds = Math.max(0, Math.floor((distance % (1000 * 60)) / 1000));
+            document.getElementById('statCountdown').textContent =
+                `${days.toString().padStart(2, '0')} : ${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Chart.js - Statistik Bulanan
+        const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+        new Chart(monthlyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'],
+                datasets: [{
+                    label: 'Potongan Gaji (Juta Rupiah)',
+                    data: [15, 18, 17, 20, 19, 21, 22, 20, 18, 19, 21, 20],
+                    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                    borderColor: 'rgba(37, 99, 235, 1)',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#2563eb', font: { weight: 'bold' } },
+                        grid: { color: 'rgba(37,99,235,0.07)' }
+                    },
+                    x: {
+                        ticks: { color: '#2563eb', font: { weight: 'bold' } },
+                        grid: { color: 'rgba(37,99,235,0.07)' }
+                    }
+                }
+            }
+        });
+
+        // Chart.js - Distribusi Peserta
+        const distribusiCtx = document.getElementById('distributionChart').getContext('2d');
+        new Chart(distribusiCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Dosen', 'Staff', 'Mahasiswa', 'Karyawan', 'Satpam'],
+                datasets: [{
+                    data: [
+                        pesertaDummy.filter(p => p.jabatan === 'Dosen').length,
+                        pesertaDummy.filter(p => p.jabatan === 'Staff').length,
+                        pesertaDummy.filter(p => p.jabatan === 'Mahasiswa').length,
+                        pesertaDummy.filter(p => p.jabatan === 'Karyawan').length,
+                        pesertaDummy.filter(p => p.jabatan === 'Satpam').length
+                    ],
+                    backgroundColor: [
+                        '#2563eb', '#22c55e', '#f59e42', '#eab308', '#f43f5e'
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('user_name');
+            window.location.href = "../index.html"; // arahkan ke index.html di root
+        });
+
+        // AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-in-out'
+        });
+    </script>
+</body>
+</html>

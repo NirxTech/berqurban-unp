@@ -1,0 +1,175 @@
+/* Custom styles for the Berqurban Bersama UNP Peduli dashboard */
+
+/* Tailwind CSS base styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Dashboard layout styles */
+.dashboard {
+    @apply flex flex-col min-h-screen bg-gray-100;
+}
+
+.header {
+    @apply bg-white shadow-md p-4;
+}
+
+.sidebar {
+    @apply w-64 bg-gray-800 text-white;
+}
+
+.main-content {
+    @apply flex-1 p-6;
+}
+
+/* Button styles */
+.btn {
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300;
+}
+
+/* Card styles */
+.card {
+    @apply bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105;
+}
+
+/* 3D effect styles */
+.card-3d {
+    perspective: 1000px;
+}
+
+.card-3d-inner {
+    @apply transition-transform transform-style-preserve-3d;
+}
+
+.card-3d:hover .card-3d-inner {
+    @apply rotate-y-10;
+}
+
+/* Animation styles */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .sidebar {
+        @apply hidden;
+    }
+}
+
+/* CountUp.js styles */
+.countup {
+    @apply text-4xl font-extrabold text-center;
+}
+
+/* Countdown timer styles */
+.countdown {
+    @apply flex space-x-2 text-center;
+}
+
+.countdown div {
+    @apply text-2xl font-bold;
+}
+
+/* Chart.js styles */
+.chart-container {
+    @apply my-4;
+}
+
+.chart-legend {
+    @apply flex justify-center space-x-4 text-sm;
+}
+
+.chart-legend div {
+    @apply flex items-center;
+}
+
+.chart-legend span {
+    @apply w-3 h-3 rounded-full inline-block mr-1;
+}
+
+/* Participants table styles */
+#participantsList {
+    @apply min-w-full divide-y divide-gray-200;
+}
+
+#participantsList th {
+    @apply bg-gray-50 text-gray-500 uppercase text-xs font-bold;
+}
+
+#participantsList td {
+    @apply px-6 py-4 whitespace-nowrap;
+}
+
+#participantsList tr:nth-child(even) {
+    @apply bg-gray-50;
+}
+
+/* Add authentication-specific styles */
+.auth-container {
+    min-height: 100vh;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.auth-card {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Enhanced card hover effects */
+.card-hover {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Animate countdown numbers */
+.countdown-number {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Enhanced table styles */
+.table-hover tr:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
