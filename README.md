@@ -29,12 +29,15 @@ berqurban-dashboard
 │   ├── layouts
 │   │   └── dashboard.html
 │   ├── pages
-│   │   ├── index.html
+│   │   ├── auth
+│   │   │   ├── register.html
+│   │   │   └── login.html
 │   │   └── dashboard.html
 │   └── utils
 │       └── helpers.js
 ├── tailwind.config.js
 ├── package.json
+├── index.html
 └── README.md
 ```
 
@@ -57,7 +60,7 @@ berqurban-dashboard
    ```
 
 ## Usage
-- Open `src/pages/index.html` in your browser to view the dashboard.
+- Open `index.html` in your browser to view the dashboard.
 - Use the navigation bar and sidebar to explore different sections of the dashboard.
 
 ## Acknowledgments
